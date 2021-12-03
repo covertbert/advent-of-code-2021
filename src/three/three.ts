@@ -16,10 +16,10 @@ const filename = './src/three/input.txt'
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   )
 
-  const actualGammaRate = gammaTotals.map((current) => (current >= totalInputsLength / 2 ? 1 : 0))
-  const epsilonRate = actualGammaRate.map((current) => (current === 0 ? 1 : 0))
+  const gammaRate = gammaTotals.map((current) => (current >= totalInputsLength / 2 ? 1 : 0))
+  const epsilonRate = gammaRate.map((current) => (current === 0 ? 1 : 0))
 
-  const gammaAsDecimal = parseInt(actualGammaRate.join(''), 2)
+  const gammaAsDecimal = parseInt(gammaRate.join(''), 2)
   const epsilonAsDecimal = parseInt(epsilonRate.join(''), 2)
 
   console.log(gammaAsDecimal * epsilonAsDecimal)
