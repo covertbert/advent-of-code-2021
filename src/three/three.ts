@@ -5,18 +5,16 @@ const filename = './src/three/input.txt'
   const fileInput = await fs.readFile(filename, 'utf8')
   const arrayOfInputs = fileInput.split('\n')
 
-  const totalInputsLength = arrayOfInputs.length
-
   const gammaTotals = arrayOfInputs.reduce<number[]>(
-    (totalArray, current) => {
-      const currentBinaryNumberAsArray = current.split('').map((number) => parseInt(number))
-
-      return totalArray.map((current, index) => (current += currentBinaryNumberAsArray[index]))
-    },
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    (totalArray, currentFromInputs) =>
+      totalArray.map(
+        (currentFromTotal, index) =>
+          (currentFromTotal += currentFromInputs.split('').map((number) => parseInt(number))[index]),
+      ),
+    Array(12).fill(0),
   )
 
-  const gammaRate = gammaTotals.map((current) => (current >= totalInputsLength / 2 ? 1 : 0))
+  const gammaRate = gammaTotals.map((current) => (current >= arrayOfInputs.length / 2 ? 1 : 0))
   const epsilonRate = gammaRate.map((current) => (current === 0 ? 1 : 0))
 
   const gammaAsDecimal = parseInt(gammaRate.join(''), 2)
