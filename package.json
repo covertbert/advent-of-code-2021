@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "one": "ts-node ./src/one/one.ts"
+    "one": "ts-node ./src/one/one.ts",
+    "two": "ts-node ./src/two/two.ts"
   },
   "author": "",
   "license": "ISC",
